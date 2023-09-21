@@ -114,6 +114,7 @@
   "views.admin.purchase.order.lines.index.table_header_5" : "Created At",
   "views.admin.purchase.order.lines.index.table_header_6" : "Updated At",
   "views.admin.purchase.order.lines.create.title": "Create Purchase Order Line",
+  "views.admin.purchase.order.lines.create.product": "Product",
   "views.admin.purchase.order.lines.create.qty": "Qty",
   "views.admin.purchase.order.lines.create.price": "Price",
   "views.admin.purchase.order.lines.create.discount": "Discount",
