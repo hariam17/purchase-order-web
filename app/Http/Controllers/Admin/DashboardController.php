@@ -115,19 +115,23 @@ class DashboardController extends Controller
 
     public function getAllDataProduct(){
         $products = Product::all();
-        for ($i=0; $i < count($products); $i++){
-            if($products[$i]['price'] < 50000){
-                $products[$i]['price_range'] = 'less_50000';
-            } elseif ($products[$i]['price'] >= 50000 && $products[$i]['price'] < 99999) {
-                $products[$i]['price_range'] = '_50000_99999';
-            } elseif ($products[$i]['price'] >= 100000 && $products[$i]['price'] < 999999) {
-                $products[$i]['price_range'] = '_100000_999999';
-            }else {
-                $products[$i]['price_range'] = 'more_100000';
-            }
-            $products[$i]['created_range'] = substr($products[$i]['created_at'], 0, 7);
+        // for ($i=0; $i < count($products); $i++){
+        //     if($products[$i]['price'] < 50000){
+        //         $products[$i]['price_range'] = 'less_50000';
+        //     } elseif ($products[$i]['price'] >= 50000 && $products[$i]['price'] < 99999) {
+        //         $products[$i]['price_range'] = '_50000_99999';
+        //     } elseif ($products[$i]['price'] >= 100000 && $products[$i]['price'] < 999999) {
+        //         $products[$i]['price_range'] = '_100000_999999';
+        //     }else {
+        //         $products[$i]['price_range'] = 'more_100000';
+        //     }
+        //     $products[$i]['created_range'] = substr($products[$i]['created_at'], 0, 7);
+        // }
+        foreach ($products as $product) {
+            $product->price_range = $this->getPriceRange($product->price);
+            $product->created_range = substr($product->created_at, 0, 7);
         }
-        return response($products);
+        return response()->json($products);
     }
 
     public function getChartProduct(){
@@ -138,5 +142,10 @@ class DashboardController extends Controller
             "more_1000000"=> 21
         ];
         return response($data);
+    }
+
+    public function apiGetDataProducts(){
+        $products = Product::all();
+        return response()->json($products);
     }
 }

@@ -8,6 +8,9 @@
         <a href="{{ route('admin.purchase.order.lines.create')}}">
             <button>Create</button>
         </a>
+        <a href="{{ route('admin.purchase.order.lines.export')}}">
+            <button>Export</button>
+        </a>
     </div>
 </div>
 <div class="row">

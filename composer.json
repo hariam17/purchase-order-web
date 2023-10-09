@@ -34,6 +34,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.1.0",
+        "maatwebsite/excel": "*",
         "pragmarx/google2fa-laravel": "^2.1"
     },
     "require-dev": {

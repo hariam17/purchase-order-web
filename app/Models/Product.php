@@ -12,4 +12,8 @@ class Product extends Model
     function PurchaseOrderLines(){
         return $this->hasMany(PurchaseOrderLine::class);
     }
+
+    protected $fillable = [
+        'product_name', 'product_code', 'price', 'created_at', 'updated_at'
+    ];
 }

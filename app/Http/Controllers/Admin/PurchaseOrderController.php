@@ -8,13 +8,16 @@ use App\Models\PurchaseOrderLine;
 use Illuminate\Http\Request;
 use Validator;
 use \DateTime;
+use App\Exports\ProductExport;
+use App\Exports\PurchaseOrderLineExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PurchaseOrderController extends Controller
 {
     public function getProductList()
     {
         $products = Product::paginate(10);
-        return view('admin.products.index', ["products" => $products]);
+        return view('admin.products.index',  compact('products'));
     }
     public function getProductShow()
     {
@@ -28,6 +31,7 @@ class PurchaseOrderController extends Controller
     {
         return view('admin.products.index');
     }
+    
 
     public function getPurchaseOrderLineList(){
         $purchaseOrderLines = PurchaseOrderLine::paginate(10);
@@ -42,6 +46,12 @@ class PurchaseOrderController extends Controller
     public function getPurchaseOrderLineDestroy($id){
         
     }
+
+    public function getPurchaseOrderLineExport(){
+        return Excel::download(new PurchaseOrderLineExport, 'POL.xlsx');
+        
+    }
+
     public function getPurchaseOrderLineCreate(){
         $products = Product::all();
         return view('admin.purchaseOrderLines.create', ["products" => $products]);

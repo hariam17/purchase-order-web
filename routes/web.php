@@ -69,6 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('products/{id}', 'PurchaseOrderController@getProductShow')->name('products.show');
     Route::get('products/{id}/edit', 'PurchaseOrderController@getProductEdit')->name('products.edit');
     Route::get('products/{id}/destroy', 'PurchaseOrderController@getProductDestroy')->name('products.destroy');
+    Route::get('products/export', 'PurchaseOrderController@getProductExport@getProductExport')->name('products.export');
     Route::get('purchase-order-lines', 'PurchaseOrderController@getPurchaseOrderLineList')->name('purchase.order.lines');
     Route::get('purchase-order-lines/create', 'PurchaseOrderController@getPurchaseOrderLineCreate')->name('purchase.order.lines.create');
     Route::get('purchase-order-lines/{id}','PurchaseOrderController@getPurchaseOrderLineShow' )->name('purchase.order.lines.show');
@@ -76,10 +77,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('purchase-order-lines/{id}/destroy', 'PurchaseOrderController@getPurchaseOrderLineDestroy')->name('purchase.order.lines.destroy');
     Route::post('purchase-order-lines/create', 'PurchaseOrderController@postPurchaseOrderLineInsert')->name('purchase.order.lines.insert');
     Route::post('purchase-order-lines/{id}/update', 'PurchaseOrderController@postPurchaseOrderLineUpdate')->name('purchase.order.lines.update');
-    
+    Route::get('purchase-order-lines/export', 'PurchaseOrderController@getProductExport@getPurchaseOrderLineExport')->name('purchase.order.lines.export');
     Route::get('reporting', 'DashboardController@getReportingPage')->name('reporting-page');
     Route::get('reporting/all-data-product', 'DashboardController@getAllDataProduct')->name('reporting.all.data.product');
     Route::get('reporting/chart-product', 'DashboardController@getChartProduct')->name('reporting.chart.product');
+
+    
+
 });
 
 
